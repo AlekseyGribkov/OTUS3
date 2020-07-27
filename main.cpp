@@ -3,6 +3,6 @@
 
 int main(){
 
-    std::cout << 1024 << '\n';
+    std::cout << 516 << '\n';
     return 0;
 }
