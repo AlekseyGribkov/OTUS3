@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.2)
 
 if($ENV{TRAVIS_BUILD_NUMBER})
-project(OTUS2 VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+project(OTUS3 VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 else()
-project(OTUS2 VERSION 0.0.1)
+project(OTUS3 VERSION 0.0.1)
 endif()
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
