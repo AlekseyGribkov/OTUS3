@@ -5,7 +5,9 @@
 
 #include "checked.cpp"
 #include "test.cpp"
-#include "vector.h"
+#include "vector.cpp"
+
+#include "foo.cpp"
 /*
 #include "mallocator.cpp"
 
@@ -40,24 +42,7 @@ auto lm = [val = std::move(value)](){
  
 };
 
-class dock
-{
-private:
-    /* data */
-public:
-    dock(/* args */);
-    ~dock();
-};
 
-dock::dock(/* args */)
-{
-    fprintf(stderr, "Alloctor \n");
-}
-
-dock::~dock()
-{
-    fprintf(stderr, "Dealloc \n");
-}
 
 
 
@@ -65,8 +50,12 @@ dock::~dock()
 
 int main(int argc, char** argv){
 
+   //foo<int> f;
+   Vector<int> v2;
 
-//Vector<int> v1;
+   //v2.push_back(10);
+   
+   //v2->push_back(10);
    //lm();
    //std::cout << value << '\n';
 /*
