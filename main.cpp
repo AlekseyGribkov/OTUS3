@@ -5,6 +5,7 @@
 
 #include "checked.cpp"
 #include "test.cpp"
+#include "vector.h"
 /*
 #include "mallocator.cpp"
 
@@ -39,43 +40,52 @@ auto lm = [val = std::move(value)](){
  
 };
 
-template <typename T> class a : public std::allocator<T> {
+class dock
+{
+private:
+    /* data */
 public:
-    T* allocate(std::size_t n, const void* hint = 0) const {
-        std::cout << "yo!" << '\n';
-        return new T[n];
-    }
-
-    void deallocate(T * ptr, std::size_t size){
-         std::cout << " 3" + size << '\n';
-        delete[] ptr;
-    }
-    
-    template <typename U> struct rebind
-    {
-        typedef a<U> other;
-    };
-    
+    dock(/* args */);
+    ~dock();
 };
+
+dock::dock(/* args */)
+{
+    fprintf(stderr, "Alloctor \n");
+}
+
+dock::~dock()
+{
+    fprintf(stderr, "Dealloc \n");
+}
+
+
+
+
 
 int main(int argc, char** argv){
 
+
+//Vector<int> v1;
    //lm();
    //std::cout << value << '\n';
+/*
+   std::cout << __cplusplus << '\n';
+   
+   
+    std::vector<dock, alloc<dock>> v1;
+    
 
-   
-   
-   
-    std::vector<int, alloc<int>> v1;
-    v1.push_back(10);
-    v1.push_back(20);
-    //v1.push_back(30);
-    v1.push_back(40);
+    for(int i = 0; i < 1000; ++i){
+        dock d;
+       v1.push_back(d);
+    }
 
 
     for(auto &item : v1)
     std::cout << item << '\n';
-    
+    */
+
     
 
     //std::vector<int, a<int>> v(1000, 42);
