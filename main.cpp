@@ -50,8 +50,8 @@ auto lm = [val = std::move(value)](){
 
 int main(int argc, char** argv){
 
-   //foo<int> f;
-   Vector<int> v2;
+   arr<int> f(10);
+   //Vector<int> v2;
 
    //v2.push_back(10);
    
