@@ -3,11 +3,19 @@
 #include <string>
 #include <cstdio>
 
+#include <map>
+#include <vector>
+#include <string>
+#include <iterator>
+
 #include "checked.cpp"
 #include "test.cpp"
 #include "vector.cpp"
 
 #include "foo.cpp"
+
+#include "src/callocator.cpp"
+
 /*
 #include "mallocator.cpp"
 
@@ -16,6 +24,8 @@ using namespace mmap_allocator_namespace;
 
 //vector<int, mmap_allocator<int> > int_vec(1024, 0, mmap_allocator<int>());
 */
+
+using namespace otus3;
 
 
 template<typename T>
@@ -41,17 +51,38 @@ std::string value = "h";
 auto lm = [val = std::move(value)](){
  
 };
+    namespace std{
+        std::ostream &operator<< (std::ostream &os, std::pair<std::string, int> const &c) {
+                    return os << c.first << ": " << c.second;
+        }
+    }
 
 
+    void allok(){
 
+        
+        std::map<std::string, int, std::less<std::string>,
+        otus3::allocator<std::pair<const std::string, int>>> stuff;
 
+        stuff["s1"] = 1;
+        stuff["s2"] = 2;
+        stuff["s3"] = 3;
 
+        std::copy(stuff.begin(), stuff.end(),
+        std::ostream_iterator<std::pair<std::string, int>>(std::cout, "\n"));
+    }
 
 
 int main(int argc, char** argv){
 
-   arr<int> f(10);
-   //Vector<int> v2;
+
+    //otus3::allocator ca();
+   //arr<int> f(10);
+   allok();
+   Vector<int> v2(10);
+   v2.push_back(5);
+
+   std::cout << v2[0] << '\n';
 
    //v2.push_back(10);
    

@@ -5,9 +5,9 @@ template<typename T>
 class Vector
 {
    private:
-     size_t size;
-     size_t cap;
-     T* data;
+     size_t size{0};
+     size_t cap{0};
+     T* data{nullptr};
    public:
      Vector();
      Vector(Vector&);
@@ -48,7 +48,7 @@ Vector<T>::Vector(){
 template<typename T>
 Vector<T>::~Vector(void)
 {
-    if(this->data)
+    if(this->data != nullptr)
        delete []data;
 }
 
@@ -115,7 +115,7 @@ template<typename T>
 void Vector<T>::create(const size_t &i)
 {
     std::cout << 1024 << '\n';
-    if(this->data){
+    if(this->data != nullptr){
         delete[] data;
     }
     this->size = 0;
