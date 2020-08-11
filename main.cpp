@@ -72,13 +72,31 @@ auto lm = [val = std::move(value)](){
         std::ostream_iterator<std::pair<std::string, int>>(std::cout, "\n"));
     }
 
+    void allok2(){
+        Vector<int> v2(10);
+        v2.push_back(0);
+        v2.push_back(1);
+        v2.push_back(2);
+        v2.push_back(3);
+        v2.push_back(4);
+        v2.push_back(5);
+/*
+        std::copy(0, 5, 
+        std::ostream_iterator<int>(std::cout, "\n"));
+        */
+    }
+
 
 int main(int argc, char** argv){
 
+int t = 1;
+    def<int> df(10);
 
-    //otus3::allocator ca();
+
+
+    otus3::allocator<int> ca();
    //arr<int> f(10);
-   allok();
+   //allok();
    Vector<int> v2(10);
    v2.push_back(5);
 

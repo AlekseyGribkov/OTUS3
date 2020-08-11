@@ -1,16 +1,59 @@
 #include <stddef.h>
 #include <iostream>
 
+#include "src/callocator.cpp"
+using namespace otus3;
+
+/*
+
+template<class T, bool f = std::is_integral_v<T>>
+struct S {
+    // template<typename = std::enable_if_t<f>>                 // (invalid)
+    template<bool _f = f, typename = std::enable_if_t<_f>>      // (valid)
+    void reset() {}
+};
+
+*/
+
+template<typename T, typename A =  otus3::allocator<T>>
+class def
+{
+    private:
+    T par;
+    A* al; 
+    T* s_par{nullptr};   
+  public:  
+  
+  explicit def(size_t size){
+    s_par  = al->allocate(size);
+    
+  }
+
+  ~def(){
+      al->deallocate(s_par, sizeof(T));  
+  }
+};
+
+
+
+
+
+
+
+
+//typename A = otus3::allocator<T>
 template<typename T>
-class Vector
+class Vector 
 {
    private:
      size_t size{0};
      size_t cap{0};
-     T* data{nullptr};
+     T* data{nullptr}; 
+     //A* allocator{nullptr};  
+
    public:
      Vector();
-     Vector(Vector&);
+     Vector(Vector&);     
      Vector operator=(const Vector&);
      bool operator==(const Vector&);
      bool operator==(int);
@@ -30,18 +73,14 @@ class Vector
 template<typename T>
 Vector<T>::Vector(int i)
 {
-    /*
-    size = i;
-    data = new T[i];
-    */
-
-   std::cout << 111 << '\n';
    create(i);
 }
 
+
+
 template<typename T>
 Vector<T>::Vector(){
-    std::cout << 10 << '\n';
+    //std::cout << 10 << '\n';
   create(1);
 }
 
@@ -50,6 +89,12 @@ Vector<T>::~Vector(void)
 {
     if(this->data != nullptr)
        delete []data;
+
+    //    if(this->t_alloctor != nullptr)
+    //    {
+    //      t_alloctor->deallocate(data, sizeof(T));
+    //      delete t_alloctor;
+    //    }
 }
 
 template<typename T>
