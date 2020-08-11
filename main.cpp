@@ -16,6 +16,8 @@
 
 #include "src/callocator.cpp"
 
+#include "src/iterator.cpp"
+
 /*
 #include "mallocator.cpp"
 
@@ -89,8 +91,7 @@ auto lm = [val = std::move(value)](){
 
 int main(int argc, char** argv){
 
-int t = 1;
-    def<int> df(10);
+
 
 
 

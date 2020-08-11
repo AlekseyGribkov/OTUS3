@@ -26,15 +26,13 @@ class def
   
   explicit def(size_t size){
     s_par  = al->allocate(size);
-    
   }
-
+def();
   ~def(){
+      if(s_par != nullptr)
       al->deallocate(s_par, sizeof(T));  
   }
 };
-
-
 
 
 
